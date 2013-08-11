@@ -8,18 +8,9 @@ exports.composeRoutes = function (settings) {
       method: 'POST',
       path: '/signup',
       config: {
-        validate: {
-          payload: {
-            name: Hapi.types.String().required()
-            // password: Hapi.types.String().min(8).description('8 characters or longer')
-          }
-        },
-
-        handler: function(req) {
-          console.log("###################---------------#################");
-          console.log("ADDDDDINNGNNGNGNNGNG    UUUUSSSSEEEEERRRRR");
+        handler: function(request) {
           var user = request.payload;
-          debugger
+          console.log('user: ', user);
           db.collection('users', function(err, collection) {
             collection.insert(user, { safe: true }, function(err, result) {
               if (err) {
@@ -30,16 +21,14 @@ exports.composeRoutes = function (settings) {
                 request.reply('user added');
               }
             });
-          });
-
-          // Bcrypt.hash newUser.password, options.bcryptRounds, (err, hashedPassword) ->
-          //   newUser.password = hashedPassword
-          //   options.db.collection 'users', (err, collection) ->
-          //     collection.insert newUser, (err, insertedUser)->
-          //       if (err?.code is dupKeyError)
-          //         req.reply Hapi.error.passThrough 409, '{"reason":"user already exist"}', 'application/json'
-          //         return
-          //       req.reply('ok')
+          })
+        },
+        payload: 'parse',
+        validate: {
+          payload: {
+            name: Hapi.types.String().required(),
+            password: Hapi.types.String().required().min(8).description('8 characters or longer')
+          }
         }
       }
     },
@@ -83,10 +72,8 @@ exports.composeRoutes = function (settings) {
 }
 
 function addUser (request) {
-  console.log("###################---------------#################");
-  console.log("ADDDDDINNGNNGNGNNGNG    UUUUSSSSEEEEERRRRR");
   var user = request.payload;
-  debugger
+
   db.collection('users', function(err, collection) {
     collection.insert(user, { safe: true }, function(err, result) {
       if (err) {
@@ -102,8 +89,6 @@ function addUser (request) {
 
 function getUsers (request) {
   db.collection('users').find().toArray(function (err, users) {
-
-    debugger;
     console.log(users);
     request.reply(users);
   });
