@@ -13,10 +13,10 @@
 <div class="visible-sm spacer-sm">
 </div>
 
-<input  class="form-control search-query" type="text" ng-model="search" placeholder="Search Me">
+<input  class="form-control" type="text" ng-model="search" placeholder="Search Me">
 
 <ul class="list-unstyled">
-  <li class="task" ng-repeat="task in tasks | filter:search">
+  <li class="task" ng-animate="'animate'" ng-repeat="task in tasks | filter:search">
     <input type="checkbox" ng-model="task.done" ng-click="updateTaskStatus(task)">
     <span class="done-{{task.done}}">{{task.text}}</span>
     <button type="button" class="close" ng-click="deleteTask(task)">&times;</button>
