@@ -1,0 +1,34 @@
+body {
+  padding-top: 60px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.spacer-sm {
+  padding-top: 34px;
+}
+
+.navbar-add-task {
+  width: 75%;
+  min-width: 165px;
+}
+
+.form-padding {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.task {
+  /*background-color: #222;*/
+  /*color: #999;*/
+  padding: 7px;
+  /*border: 1px solid #999;*/
+}
+
+.text-blue {
+  color: #428BCA;
+}

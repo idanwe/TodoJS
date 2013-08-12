@@ -1,0 +1,24 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <a class="navbar-brand pull-left" href="#">ToodMe</a>
+  <span class="pull-right">
+    <a class="btn navbar-btn" ng-click="logout()">Logout</a>
+  </span>
+  <form class="navbar-form col-lg-7 col-md-7 col-8" ng-submit="addTask()">
+    <input class="form-control navbar-add-task" type="text" ng-model="newTaskText" placeholder="What you need to do?">
+    <button class="btn btn-default hidden-sm pull-right" type="submit">Add Me</button>
+    <button class="btn btn-default visible-sm pull-right" type="submit">+</button>
+  </form>
+</div>
+
+<div class="visible-sm spacer-sm">
+</div>
+
+<input  class="form-control search-query" type="text" ng-model="search" placeholder="Search Me">
+
+<ul class="list-unstyled">
+  <li class="task" ng-repeat="task in tasks | filter:search">
+    <input type="checkbox" ng-model="task.done" ng-click="updateTaskStatus(task)">
+    <span class="done-{{task.done}}">{{task.text}}</span>
+    <button type="button" class="close" ng-click="deleteTask(task)">&times;</button>
+  </li>
+</ul>
