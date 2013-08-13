@@ -1,6 +1,7 @@
 var Hapi = require('hapi'),
     User = require('./user'),
     ObjectID = require('mongodb').ObjectID,
+    _ = require('underscore'),
     options = {};
 
 exports.__defineSetter__('options', function(value) {
