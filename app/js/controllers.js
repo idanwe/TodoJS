@@ -13,14 +13,9 @@ angular.module('todoApp.controllers', []).
 
       $http.post('/signup', userData)
         .success(function(data, status) {
-          console.log('success: ', status);
-          console.log('data: ', data);
-          $location.path('/tasks');
+          $location.path('/signin');
         })
-        .error(function(data, status) {
-          console.log('error: ', status);
-          console.log('data: ', data);
-        });
+        .error(function(data, status) {});
     }
   }])
   .controller('SigninCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -34,9 +29,7 @@ angular.module('todoApp.controllers', []).
         .success(function(data, status) {
           $location.path('/tasks');
         })
-        .error(function(data, status) {
-          console.log('sign in error');
-        });
+        .error(function(data, status) {});
     };
   }])
   .controller('TasksCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -45,8 +38,7 @@ angular.module('todoApp.controllers', []).
         .success(function(data, status) {
           $location.path('/signin');
         })
-        .error(function(data, status) {
-        });
+        .error(function(data, status) {});
     };
 
     $http.get('/tasks')
