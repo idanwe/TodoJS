@@ -13,7 +13,7 @@ exports.createServer = function(settings) {
     isSecure: false
   });
 
-  server.addRoutes(Routes.composeRoutes(settings));
+  server.addRoutes(Routes.generateRoutes(settings));
 
   return server;
 };
