@@ -57,15 +57,12 @@ function signin(request) {
   var username = request.query.username,
       password = request.query.password;
 
-  console.log('signin username: ', username);
   exports.options.db.collection('users', function(err, collection) {
     collection.findOne({ _id: username }, { password: 1 }, function(err, user) {
-      console.log('user ', user);
       if (!user) {
         return request.reply(Hapi.error.badRequest('Invalid username or password'));
       }
       Bcrypt.compare(password, user.password, function(err, isValid) {
-        console.log('err ', err);
         if (err) {
           return request.reply(Hapi.error.badRequest('Invalid username or password'));
         }
