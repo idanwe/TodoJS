@@ -7,5 +7,5 @@ angular.module('todoApp', ['todoApp.filters', 'todoApp.services', 'todoApp.direc
     $routeProvider.when('/signup', { templateUrl: 'partials/signup.html', controller: 'SignupCtrl' })
     $routeProvider.when('/signin', { templateUrl: 'partials/signin.html', controller: 'SigninCtrl' })
     $routeProvider.when('/tasks' , { templateUrl: 'partials/tasks.html' , controller: 'TasksCtrl'  })
-    $routeProvider.otherwise({ redirectTo: '/' });
+    $routeProvider.otherwise({ redirectTo: '/signin' });
   }]);
