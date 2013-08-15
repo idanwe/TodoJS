@@ -1,6 +1,8 @@
 var MongoClient = require('mongodb').MongoClient,
     Server = require('mongodb').Server;
-var mongoClient = new MongoClient(new Server('localhost', 27017)),
+
+var mongoUri = process.env.MONGOLAB_URI || 'localhost'
+var mongoClient = new MongoClient(new Server(mongoUri, 27017)),
     db;
 
 mongoClient.open(function (err, client) {
