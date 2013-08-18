@@ -4,7 +4,7 @@ var Hapi = require('hapi'),
     port = process.env.PORT || 2222;
 
 exports.createServer = function(settings) {
-  conosle.log('server running on port: ', port);
+  console.log('server running on port: ', port);
   var server = Hapi.createServer(port);
 
   server.auth('session', {
