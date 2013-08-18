@@ -3,6 +3,7 @@ var MongoClient = require('mongodb').MongoClient,
     Bcrypt = require('bcrypt');
 
 var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/',
+    bcryptRounds = 12
     db;
     // mongoClient = new MongoClient.connect(new Server(mongoUri));
 
