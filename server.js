@@ -1,9 +1,10 @@
 var Hapi = require('hapi'),
     Bcrypt = require('bcrypt'),
-    Routes = require('./routes');
+    Routes = require('./routes'),
+    port = process.env.PORT || 2222;
 
 exports.createServer = function(settings) {
-  var server = Hapi.createServer(2222);
+  var server = Hapi.createServer(port);
 
   server.auth('session', {
     scheme: 'cookie',
