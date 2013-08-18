@@ -6,6 +6,8 @@ var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/',
     db;
     // mongoClient = new MongoClient.connect(new Server(mongoUri));
 
+console.log('----------------------------------------------');
+console.log('mongoUri: ', mongoUri);
 mongoClient = new MongoClient.connect(mongoUri, function (err, client) {
 // mongoClient.open(function (err, client) {
   db = client.db('tododb');
